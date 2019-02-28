@@ -1,0 +1,1 @@
+ng build --prod --base-href /wizards/ --output-path C:\webroot\dist\wizardweb

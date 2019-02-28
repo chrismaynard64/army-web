@@ -1,0 +1,36 @@
+<div>
+
+    <div *ngIf="army$ | async as army; else notloaded">
+        <h1>{{army.name}}</h1>
+        <form class="example-form">
+            <div class="row">
+              <div class="col md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" value="Sushi" name="name" [(ngModel)]="army.name" />
+                </mat-form-field>
+              </div>
+            </div>
+      </form>  
+      
+
+  <div>
+
+      <button (click)="save()"   mat-raised-button color="primary" >Save</button> 
+      <button (click)="addUnit()"   mat-raised-button color="primary" [disabled]="army._id == '-1'" >Add Unit</button>
+    </div>
+
+
+
+
+    <div>
+        <app-army-edit [army$]="army$"></app-army-edit>
+    </div>
+
+  </div>
+
+
+
+  <ng-template #notloaded>
+    Loading...
+  </ng-template>
+</div>

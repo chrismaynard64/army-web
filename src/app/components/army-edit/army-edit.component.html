@@ -1,0 +1,9 @@
+<div *ngIf="army$ | async as army; else notloaded">
+
+  
+  <div>
+    <app-unit-list [units]="army.units"  (selected)="unitSelected($event)"></app-unit-list> 
+  </div>
+  
+  
+  </div>

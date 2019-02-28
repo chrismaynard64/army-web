@@ -1,0 +1,190 @@
+<div>
+  <div style="width: 100%; text-align: right"> <button mat-button>
+      <mat-icon (click)="cancel()">clear</mat-icon>
+    </button>
+  </div>
+  <form class="example-form">
+    <div class="row">
+      <div class="col md-6">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" value="Sushi" name="name" [(ngModel)]="unit.name" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Image" name="image" [(ngModel)]="unit.image" />
+        </mat-form-field>
+
+      </div>
+      <div class="col md-6">
+        <img [src]="unit.image ? 'assets/PNG2/' + unit.image : 'assets/40k/images2.png'" alt="{{unit.name}}" class="unit">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col md-12">
+
+          <mat-accordion>
+
+              <mat-expansion-panel  *ngFor="let unitModel of unit.models;let index = index;trackBy:trackByIndex;"
+                  [expanded]="index == 0">
+                <mat-expansion-panel-header>
+                   {{unitModel.name}}
+                </mat-expansion-panel-header>
+ 
+                <div class="row">
+                    <div class="col md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="name" value="" name="name-{{index}}" type="text" [(ngModel)]="unitModel.name" />
+                      </mat-form-field>
+                    </div>
+                    <div class="col md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="power rating" value="" name="powerRating-{{index}}" type="text" [(ngModel)]="unitModel.powerRating" />
+                      </mat-form-field>
+                    </div>
+                    <div class="col md-4">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="role" value="" name="role-{{index}}" type="text" [(ngModel)]="unitModel.role" />
+                        </mat-form-field>
+                      </div>
+                  </div>
+              
+
+
+                <div class="row">
+
+                    <div class="col md-4">
+                     
+                          <mat-checkbox  [(ngModel)]="unitModel.character" name="character-{{index}}" class="mat-primary">character</mat-checkbox>
+                                            
+                    </div>
+
+                    <div class="col md-4">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="movement" value="" name="movement-{{index}}" type="number" [(ngModel)]="unitModel.movement" />
+                        </mat-form-field>
+                      </div>
+                      <div class="col md-4">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="wisdom" value="" name="wisdom-{{index}}" type="number" [(ngModel)]="unitModel.wisdom" />
+                        </mat-form-field>
+                      </div>
+                  </div>
+              
+              
+                  <div class="row">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col md-4">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="weapon skill" value="" name="weaponSkill-{{index}}" type="number" [(ngModel)]="unitModel.weaponSkill" />
+                          </mat-form-field>
+                        </div>
+                        <div class="col md-4">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="ballisticSkill" value="" name="ballisticSkill-{{index}}" type="number" [(ngModel)]="unitModel.ballisticSkill" />
+                          </mat-form-field>
+                        </div>
+                        <div class="col md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="strength" value="" name="strength-{{index}}" type="number" [(ngModel)]="unitModel.strength" />
+                            </mat-form-field>
+                          </div>
+                     
+                      </div>
+
+                      <div class="row">
+                           <div class="col md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="toughness" value="" name="toughness-{{index}}" type="number" [(ngModel)]="unitModel.toughness" />
+                            </mat-form-field>
+                          </div>
+                          <div class="col md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="wounds" value="" name="wounds-{{index}}" type="number" [(ngModel)]="unitModel.wounds" />
+                              </mat-form-field>
+                            </div>
+                            <div class="col md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="attacks" value="" name="attacks-{{index}}" type="number" [(ngModel)]="unitModel.attacks" />
+                              </mat-form-field>
+                            </div>
+                        </div>
+                      
+                        <div class="row">
+
+                          </div>
+                   
+                          <div class="row">
+                              <div class="col md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="leadership" value="" name="leadership-{{index}}" type="number" [(ngModel)]="unitModel.leadership" />
+                                </mat-form-field>
+                              </div>
+                              <div class="col md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="saves" value="" name="saves-{{index}}" type="number" [(ngModel)]="unitModel.saves" />
+                                </mat-form-field>
+                              </div>
+                              <div class="col md-4">
+                              </div>
+                            </div>
+                            
+
+            
+              </mat-expansion-panel>
+            </mat-accordion>
+
+
+
+
+          <div class="row" *ngFor="let unitModel of unit.models">
+              <div class="col md-12">
+
+                           
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <app-Weapon-list [Weapons$]="myof(unit.Weapons)" (selected)="WeaponDeleted($event)" [WeaponListStyle]="WeaponListStyle"></app-Weapon-list>
+                      </div>
+                    </div>
+                
+                
+                    <div class="row" *ngIf="showWeapons">
+                      <div class="col-md-12">
+                        <app-Weapon-list [Weapons$]="myof(Weapons)" [WeaponListStyle]="WeaponListStyle" (selected)="WeaponSelected($event)"></app-Weapon-list>
+                      </div>
+                    </div>
+                
+
+                
+
+
+                </div>
+          </div>   
+      </div>
+
+    </div>
+
+                
+    <div class="row">
+        <div class="col-md-12">
+          <div mat-dialog-actions>
+            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+            <button mat-button (click)="showWeaponDlg()" cdkFocusInitial>Add Weapon</button>
+            <button mat-button (click)="randomise()" *ngIf="false" cdkFocusInitial>Randomise</button>
+            <button mat-button (click)="delete()" cdkFocusInitial>Delete</button>
+          </div>
+        </div>
+      </div>
+  
+
+
+  </form>
+
+
+
+</div>

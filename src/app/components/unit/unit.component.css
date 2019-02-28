@@ -1,0 +1,21 @@
+div {
+    display: block;
+    cursor: pointer;
+}
+
+a {
+    margin: 10px 10px 10px 10px;
+    display: block;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+a:hover {
+    background-color: aquamarine;
+}
+
+img.unit {
+    width: 80px;
+    height: 80px;  
+}

@@ -1,0 +1,15 @@
+<div>
+
+  <h2>Title</h2>
+ 
+  <button  mat-raised-button color="primary" (click)="addNew()">New</button>
+<p>{{unitname}}</p>
+
+<div>
+    <app-unit-list [units]="units$ | async"  (selected)="unitSelected($event)"></app-unit-list> 
+</div>
+<!--
+
+-->
+
+</div>
