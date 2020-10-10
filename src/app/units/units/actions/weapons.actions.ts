@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 
-import { Weapon } from '../../../model/Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 
 export enum WeaponsActionTypes {
   LoadWeapons = '[Weapons] Load Weapons',

@@ -33,7 +33,7 @@ export class ArmiesEffects {
      })
   
   );
-
+  
 
   @Effect()
   loadArmy$ = this.actions$.pipe(ofType(ArmiesActionTypes.LoadArmy),

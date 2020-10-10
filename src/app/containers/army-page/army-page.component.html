@@ -15,17 +15,19 @@
 
   <div>
 
-      <button (click)="save()"   mat-raised-button color="primary" >Save</button> 
-      <button (click)="addUnit()"   mat-raised-button color="primary" [disabled]="army._id == '-1'" >Add Unit</button>
+      <button (click)="save()"   mat-raised-button color="primary" >Save</button> &nbsp;
+      <button (click)="addUnit()"   mat-raised-button color="primary" [disabled]="army._id == '-1'" >Add Unit</button> &nbsp;
+      <button (click)="addWeapon()"   mat-raised-button color="primary" [disabled]="army._id == '-1'" >Add Weapon</button> &nbsp;
+      
     </div>
 
 
-
+  
 
     <div>
-        <app-army-edit [army$]="army$"></app-army-edit>
+        <app-army-edit [army$]="army$" [Weapons]="Weapons"></app-army-edit>
     </div>
-
+ 
   </div>
 
 

@@ -9,7 +9,7 @@ import { UnitService } from '../../../services/unit.service';
 import { Unit } from '../../../model/unit';
 import { LoadUnitsSuccess } from '../actions/units.actions';
 import { WeaponsActionTypes, LoadWeaponsSuccess, LoadWeaponsError } from '../actions/Weapons.actions';
-import { Weapon } from '../../../model/Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 import { Http } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers';

@@ -4,6 +4,9 @@
   <div>
     <app-unit-list [units]="army.units"  (selected)="unitSelected($event)"></app-unit-list> 
   </div>
-  
+  <div *ngIf="army?.weapons  && army.weapons.length ">
+    <h3>Weapons</h3>
+    <app-Weapon-list [Weapons]="army.weapons"  [WeaponListStyle]="WeaponListStyle"></app-Weapon-list>
+</div>
   
   </div>

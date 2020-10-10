@@ -1,11 +1,12 @@
 import { of, Observable, Subscription } from 'rxjs';
 import { Component, OnInit, Input, EventEmitter, Output, Inject } from '@angular/core';
-import { Unit, UnitWeapon } from 'src/app/model/unit';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Unit, UnitWeapon, UnitModel } from 'src/app/model/unit';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { UnitMessageService } from 'src/app/services/unit-message.service';
 import { UnitEditData } from 'src/app/model/unitEditData';
-import { Weapon } from 'src/app/model/Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 import { WeaponListStyles } from '../Weapon-list/Weapon-list.component';
+import { WeaponSelectComponent } from '../weapon-select/weapon-select.component';
 
 @Component({
   selector: 'app-unit-edit',
@@ -20,7 +21,7 @@ myof = of;
   @Output("change") saved: EventEmitter<Unit> = new EventEmitter<Unit>();
 
   unit: Unit;
-  Weapons: Weapon[] = [];
+  @Input() Weapons: Weapon[] = [];
   tmpWeapons: Weapon[] = [];
   showWeapons = false;
   WeaponListStyle: WeaponListStyles = { listStyles: {}, itemStyles: { width: '25px', height: '25px', margin: '3px 3px 3px 3px'}} 
@@ -31,7 +32,9 @@ myof = of;
 
   constructor(public dialogRef: MatDialogRef<UnitEditComponent>,
     @Inject(MAT_DIALOG_DATA) public unitData: UnitEditData,
-    private unitMsg: UnitMessageService) { 
+    private unitMsg: UnitMessageService,
+    private  dialog: MatDialog
+    ) { 
       this.unit = {...unitData.unit, Weapons: []} ;
       
       this.Weapons = unitData.Weapons;
@@ -70,8 +73,24 @@ myof = of;
  }
 
  showWeaponDlg() {
+  const dialogRef = this.dialog.open(WeaponSelectComponent, {
+    width: '250px',
+    height: '350px',
+    data: {armyId: this.unitData.unit.army, Weapons: this.Weapons }
+  });
 
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
  }
+
+ addUnit() {
+  this.unit = new Unit();   
+}
+
+addUnitModel() {
+  this.unit.models.push(new UnitModel());
+}
 
   WeaponSelected(Weapon: Weapon) {
         let s = {...(new UnitWeapon()), WeaponId: Weapon._id, name: Weapon.name, image: Weapon.image};

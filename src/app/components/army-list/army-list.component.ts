@@ -11,6 +11,7 @@ import { Army } from 'src/app/model/army';
 export class ArmyListComponent implements OnInit {
 
   @Input() armies$ =  of([]);
+  @Input() armies =  [];
 
   constructor(private router: Router) { }
 

@@ -8,7 +8,8 @@ import { State } from 'src/app/units/units/reducers';
 import { SaveUnit, DeleteUnit } from 'src/app/units/units/actions/units.actions';
 import { UnitEditComponent } from '../unit-edit/unit-edit.component';
 import { MatDialog } from '@angular/material';
-import { Weapon } from 'src/app/model/Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
+import { WeaponListStyles } from '../Weapon-list/Weapon-list.component';
 
 @Component({
   selector: 'app-army-edit',
@@ -27,7 +28,8 @@ export class ArmyEditComponent implements OnInit {
   
   unitSub: Subscription;
   unitEdit: Unit;
-  Weapons: Weapon[];
+  @Input() Weapons: Weapon[];
+  WeaponListStyle: WeaponListStyles = { listStyles: {}, itemStyles: { width: '40px', height: '40px', margin: '3px 3px 3px 3px'}} 
 
   of = of;
 

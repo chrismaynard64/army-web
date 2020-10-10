@@ -1,4 +1,6 @@
-<app-Weapon *ngFor="let Weapon of Weapons$ | async" 
-    [Weapon]="Weapon" 
-    [styleObj]="WeaponListStyle.itemStyles"  
-    (click)="WeaponSelected(Weapon)"></app-Weapon>
+<div *ngIf="Weapons">
+    <app-Weapon *ngFor="let Weapon of Weapons" 
+        [Weapon]="Weapon" 
+        [styleObj]="WeaponListStyle.itemStyles"  
+        (click)="WeaponSelected(Weapon)"></app-Weapon>
+</div>

@@ -1,3 +1,5 @@
-<p *ngFor="let army of armies$ | async">
-  <a (click)="go(army._id)" >{{army.name}}</a>
-</p>
+<div  *ngIf="armies">
+    <p *ngFor="let army of armies">
+      <a (click)="go(army._id)" >{{army.name}}</a>
+    </p>
+</div>

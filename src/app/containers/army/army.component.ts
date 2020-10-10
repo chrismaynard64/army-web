@@ -30,7 +30,7 @@ export class ArmiesPageComponent implements OnInit {
      this.armies$ = this.store.select(selectArmies);
 
      this.armies$.subscribe(a => {
-
+        this.armies = a;
      })
 
 

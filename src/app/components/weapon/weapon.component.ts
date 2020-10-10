@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Weapon } from 'src/app/model/Weapon';
-import { UnitMessageService } from 'src/app/services/unit-message.service';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
+import { UnitMessageService, ActionType } from 'src/app/services/unit-message.service';
 
 @Component({
   selector: 'app-Weapon',
-  templateUrl: './Weapon.component.html',
-  styleUrls: ['./Weapon.component.css']
+  templateUrl: './weapon.component.html',
+  styleUrls: ['./weapon.component.css']
 })
 export class WeaponComponent implements OnInit {
 
@@ -18,9 +18,18 @@ export class WeaponComponent implements OnInit {
   }
 
 
-  WeaponSelected(Weapon) {
-      this.wizMsg.sendWeaponMessage(Weapon);
+  weaponSelected(weapon) {
+      this.wizMsg.sendWeaponMessage(weapon);
  }
 
 
+ edit(weapon: Weapon) {
+
+ }
+
+ /*
+ delete()  {
+  this.wizMsg.sendWeaponDeleteMessage(weapon);
+ }
+*/
 }

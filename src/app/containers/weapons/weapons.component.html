@@ -1,8 +1,10 @@
 
 <div>
 
-    <h2>Weapons</h2>
+  <h2>  <!--Weapons--></h2>
+    <button (click)="addWeapon()"   mat-raised-button color="primary" >Add Weapon</button>
+
 <div>
-    <app-Weapon-list [Weapons$]="Weapons$"  (selected)="WeaponSelected($event)" [WeaponListStyle]="WeaponListStyle"></app-Weapon-list>
+    <app-Weapon-list [Weapons]="Weapons"  [WeaponListStyle]="WeaponListStyle"></app-Weapon-list>
 </div>
 </div>

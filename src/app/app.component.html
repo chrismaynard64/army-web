@@ -35,13 +35,22 @@
           </button>
         </div>
           <div class="bar-item">
+              <button
+              mat-flat-button  color="primary"
+                routerLink="/weapons"
+                *ngIf="auth.isAuthenticated()">
+                  Weapons
+              </button>
+        </div>
+        <div class="bar-item">
           <button
           mat-flat-button  color="primary"
-            routerLink="/weapons"
+            routerLink="/test"
             *ngIf="auth.isAuthenticated()">
-              Weapons
+              Test
           </button>
-        </div>
+    </div>
+
         <span class="example-spacer"></span>
         <div class="bar-item">
             <button

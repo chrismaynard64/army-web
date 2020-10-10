@@ -53,9 +53,7 @@ import { Army } from 'src/app/model/army';
 export const getAllArmies = createSelector(selectArmies, w =>{
     return  w.allArmies;
 });
-export const getAllWeapons = createSelector(selectWeapons, s => {
-    return s.WeaponState;
-});
+
 */
 
   

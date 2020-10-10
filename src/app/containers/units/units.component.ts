@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { UnitService } from 'src/app/services/unit.service';
 import { UnitMessageService } from 'src/app/services/unit-message.service';
 import { Unit } from 'src/app/model/unit';
-import { Weapon } from 'src/app/model/Weapon';
+
 import { MatDialog } from '@angular/material';
 import { UnitEditComponent } from 'src/app/components/unit-edit/unit-edit.component';
 import { Store } from '@ngrx/store';
@@ -11,6 +11,7 @@ import { State } from 'src/app/store/reducers';
 import { LoadUnits, SaveUnit, DeleteUnit } from 'src/app/units/units/actions/units.actions';
 import { selectUnits, selectUnitsState } from 'src/app/units/units/reducers';
 import { WeaponListStyles } from 'src/app/components/Weapon-list/Weapon-list.component';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 
 @Component({
   selector: 'app-units',

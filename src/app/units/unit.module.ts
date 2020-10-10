@@ -5,11 +5,11 @@ import { StoreModule } from '@ngrx/store';
 import * as fromUnits from './units//reducers/units.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UnitsEffects } from './units/effects/units.effects';
-import * as fromWeapons from './units/reducers/Weapons.reducer';
+import * as fromWeapon from './weapon/weapon.reducer';
 import * as fromArmies from './armies/reducers/armies.reducer';
 import { ArmiesEffects } from './armies/effects/armies.effects';
-import * as fromWeapon from '../units/weapons/reducers/weapon.reducer';
-import { WeaponEffects } from '../units/weapons/effects/weapon.effects';
+import { WeaponEffects } from './weapon/weapon.effects';
+
 
 @NgModule({
   imports: [
@@ -18,9 +18,9 @@ import { WeaponEffects } from '../units/weapons/effects/weapon.effects';
 
     StoreModule.forFeature('units', fromUnits.reducer),
     EffectsModule.forFeature([UnitsEffects, ArmiesEffects, WeaponEffects]),
-    StoreModule.forFeature('Weapons', fromWeapons.reducer),
-    StoreModule.forFeature('armies', fromArmies.reducer),
-    StoreModule.forFeature('weapon', fromWeapon.reducer)],
+    StoreModule.forFeature('weapons', fromWeapon.weaponReducer),
+    StoreModule.forFeature('armies', fromArmies.reducer)
+  ],
   declarations: []
 })
 export class UnitsModule { }

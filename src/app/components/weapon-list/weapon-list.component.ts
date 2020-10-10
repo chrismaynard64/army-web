@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Weapon } from 'src/app/model/Weapon';
+
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 
 @Component({
   selector: 'app-Weapon-list',
@@ -8,7 +9,7 @@ import { Weapon } from 'src/app/model/Weapon';
 })
 export class WeaponListComponent implements OnInit {
 
-@Input() Weapons$;
+@Input() Weapons = [];
 @Input() WeaponListStyle: WeaponListStyles = { listStyles: {}, itemStyles:{}};
 @Output() selected = new EventEmitter<Weapon>()
 
@@ -16,6 +17,7 @@ export class WeaponListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      let i = 1;
   }
 
 

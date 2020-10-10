@@ -37,6 +37,8 @@ import { ArmyEditComponent } from './components/army-edit/army-edit.component';
 import { ArmiesPageComponent } from './containers/army/army.component';
 import { ArmyPageComponent } from './containers/army-page/army-page.component';
 import { CustomRouterStateSerializer } from './store/customRouterStateSerializer';
+import { WeaponSelectComponent } from './components/weapon-select/weapon-select.component';
+import { TestPageComponent } from './containers/test-page/test-page.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { CustomRouterStateSerializer } from './store/customRouterStateSerializer
     ArmiesPageComponent,
     ArmyListComponent,
     ArmyEditComponent,
-    ArmyPageComponent
+    ArmyPageComponent,
+    WeaponSelectComponent,
+    TestPageComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,6 @@ import { CustomRouterStateSerializer } from './store/customRouterStateSerializer
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UnitEditComponent]
+  entryComponents: [UnitEditComponent, WeaponSelectComponent]
 })
 export class AppModule { }

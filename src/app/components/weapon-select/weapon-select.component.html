@@ -1,0 +1,11 @@
+<div>
+    <div style="width: 100%; text-align: right"> <button mat-button>
+        <mat-icon (click)="cancel()">clear</mat-icon>
+      </button>
+    </div>
+
+    <button (click)="addWeapon()"   mat-raised-button color="primary" [disabled]="false" >Add Weapon</button> &nbsp;
+   <div *ngIf="Weapons">
+      <app-Weapon-list [Weapons]="Weapons"  [WeaponListStyle]="WeaponListStyle"></app-Weapon-list>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Army } from './army';
-import { Weapon } from './Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
 import { ArgumentType } from '@angular/core/src/view';
 export class Unit {
     _id: string = '-1';
@@ -13,7 +13,7 @@ export class Unit {
 
     constructor() {
         this.models.push(new UnitModel());
-        this.name = 'New Unit';
+        this.name = 'New Unit'; 
     }
 }
 

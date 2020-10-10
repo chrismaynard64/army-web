@@ -4,16 +4,18 @@ import { map, switchMap, catchError} from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 import { Unit } from '../model/unit';
 import { Army } from '../model/army';
+import { Config } from '../common/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnitService {
+  BASE_URL = Config.BASE_URL;
 
   constructor(private http: HttpClient) { }
 
   getUnits() {
-      return this.http.get(`http://localhost:3000/unit/get`)
+      return this.http.get(`${this.BASE_URL}unit/get`)
      // return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)
@@ -22,14 +24,14 @@ export class UnitService {
 
   
   saveUnit(unit: Unit) {
-    return this.http.put(`http://localhost:3000/unit/save/${unit._id}` , unit)
+    return this.http.put(`${this.BASE_URL}unit/save/${unit._id}` , unit)
     //  return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)
        );
   }  
   saveUnitToArmy(unit: Unit) {
-    return this.http.put(`http://localhost:3000/unit/savetoarmy/${unit._id}` , unit)
+    return this.http.put(`${this.BASE_URL}unit/savetoarmy/${unit._id}` , unit)
     //  return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)
@@ -37,7 +39,7 @@ export class UnitService {
   }
    
   deleteUnit(unit: Unit) {
-    return this.http.delete(`http://localhost:3000/unit/delete/${unit._id}`)
+    return this.http.delete(`${this.BASE_URL}unit/delete/${unit._id}`)
     //  return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)
@@ -47,7 +49,7 @@ export class UnitService {
 
 
   getWeapons() {
-    return this.http.get(`http://localhost:3000/Weapon`)
+    return this.http.get(`${this.BASE_URL}Weapon`)
     //  return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)
@@ -55,7 +57,7 @@ export class UnitService {
   }
 
   getWeapon(id: string) {
-    return this.http.get(`http://localhost:3000/weapon/` + id )
+    return this.http.get(`${this.BASE_URL}weapon/` + id )
 // return this.http.get('../../data/units.json')
     .pipe(
         map((response) => response)
@@ -64,7 +66,7 @@ export class UnitService {
 
   
   getArmies() {
-    return this.http.get(`http://localhost:3000/army`)
+    return this.http.get(`${this.BASE_URL}army`)
    // return this.http.get('../../data/units.json')
      .pipe(
          map((response) => response)
@@ -72,7 +74,7 @@ export class UnitService {
   }
  
   getArmy(id: string) {
-    return this.http.get(`http://localhost:3000/army/` + id )
+    return this.http.get(`${this.BASE_URL}army/` + id )
 // return this.http.get('../../data/units.json')
     .pipe(
         map((response) => response)
@@ -80,7 +82,7 @@ export class UnitService {
 }
 
 saveArmy(army: Army) {
-    return this.http.put(`http://localhost:3000/army/${army._id}` , army)
+    return this.http.put(`${this.BASE_URL}army/${army._id}` , army)
     //  return this.http.get('../../data/units.json')
        .pipe(
            map((response) => response)

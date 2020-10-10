@@ -7,6 +7,7 @@ import { UnitService } from './services/unit.service';
 import { Store } from '@ngrx/store';
 import { LoadUnits } from './units/units/actions/units.actions';
 import { LoadWeapons } from './units/units/actions/Weapons.actions';
+import { SearchAllWeaponEntities } from './units/weapon/weapon.actions';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent  implements OnInit {
 
     ngOnInit() {
 
-
+      this.store.dispatch(new SearchAllWeaponEntities());
       
       this.store.dispatch(new LoadUnits());
     //  this.store.dispatch(new LoadWeapons());

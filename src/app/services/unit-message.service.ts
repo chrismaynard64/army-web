@@ -1,7 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Unit } from '../model/unit';
-import { Weapon } from '../model/Weapon';
+import { Weapon } from 'src/app/units/weapon/weapon.model';
+
+
+export enum ActionType {
+
+    selectAll = 1,
+    edit,
+    selectOne,
+    create,
+    update,
+    delete,
+}
+
+export interface ActionPayload {
+    action: ActionType,
+    payload: any
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +25,7 @@ import { Weapon } from '../model/Weapon';
 export class UnitMessageService {
 
   private subject = new Subject<Unit>();
-  private WeaponSubject = new Subject<Weapon>();
+  private WeaponSubject = new Subject<ActionPayload>();
   private saveUnitSubject = new Subject<Unit>();
   private deleteUnitSubject = new Subject<Unit>();
  
@@ -46,15 +62,27 @@ public getDeleteUnitMessage(): Observable<Unit> {
   }
 
 
-  public sendWeaponMessage(Weapon: Weapon) {
-    this.WeaponSubject.next(Weapon);
+  public sendWeaponMessage(weapon: Weapon) {
+    this.WeaponSubject.next({action: ActionType.edit, payload: weapon});
+}
+
+public sendWeaponSaveMessage(weapon: Weapon) {
+    this.WeaponSubject.next({action: ActionType.update, payload: weapon});
+}
+
+public sendWeaponCreateMessage(weapon: Weapon) {
+    this.WeaponSubject.next({action: ActionType.create, payload: weapon});
+}
+
+public sendWeaponDeleteMessage(weapon: Weapon) {
+    this.WeaponSubject.next({action: ActionType.delete, payload: weapon});
 }
 
 public clearWeaponMessage() {
     this.WeaponSubject.next();
 }
 
-public getWeaponMessage(): Observable<Weapon> {
+public getWeaponMessage(): Observable<ActionPayload> {
     return this.WeaponSubject.asObservable();
 }
 
